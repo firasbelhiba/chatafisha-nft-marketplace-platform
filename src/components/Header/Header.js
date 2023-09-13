@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { accountId, login } from "../../utils";
 
 const Header = () => {
-
   return (
     <header id="header">
       {/* Navbar */}

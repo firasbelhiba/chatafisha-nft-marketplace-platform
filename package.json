@@ -14,6 +14,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "crypto": "^1.0.1",
+    "formik": "^2.4.4",
     "near-api-js": "^0.44.2",
     "react": "^18.0.2",
     "react-dom": "^18.0.2",
