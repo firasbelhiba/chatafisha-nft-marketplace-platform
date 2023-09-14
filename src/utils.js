@@ -18,7 +18,6 @@ export async function initContract() {
   // is hosted at https://wallet.testnet.near.org
   window.walletConnection = new WalletConnection(window.near);
 
-  // Getting the Account ID. If still unauthorized, it's just empty string
   window.accountId = window.walletConnection.getAccountId();
 
   window.chatafisha_nft_marketplace = await new Contract(
@@ -26,7 +25,7 @@ export async function initContract() {
     "chatafisha_nft_marketplace.testnet",
     {
       viewMethods: ["get_marketplacedata", "get_special_data"],
-      changeMethods: ["mint_nft"],
+      changeMethods: ["mint_nft", "nft_transfer"],
     }
   );
 
@@ -51,10 +50,12 @@ export async function login() {
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
+  await window.walletConnection.signOut();
   await window.walletConnection.requestSignIn(nearConfig.marketContractName);
 }
 
 export function accountId() {
+  console.log(window.accountId);
   return {
     accountId: window.accountId,
   };

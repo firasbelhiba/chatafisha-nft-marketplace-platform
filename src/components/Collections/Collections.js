@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { getMCollection } from "../../utils";
+import { accountId, getMCollection } from "../../utils";
 import { Link } from "react-router-dom";
 
 const BASE_URL =
@@ -8,9 +8,12 @@ const BASE_URL =
 
 const Collections = () => {
   const [collectionData, setCollectionData] = useState([]);
+  const handleLinkClick = (url) => {
+    window.location.href = url;
+  };
 
   useEffect(() => {
-    getMCollection("firas.testnet").then((res) => {
+    getMCollection(accountId().accountId).then((res) => {
       console.log(res);
       setCollectionData(res);
     });
@@ -39,7 +42,19 @@ const Collections = () => {
               <div key={`cd_${idx}`} className="col-12 col-sm-6 col-lg-3 item">
                 <div className="card no-hover text-center">
                   <div className="image-over">
-                    <Link to="/item-details" state={{ itemData: item }}>
+                    <Link
+                      to={`/item-details/${encodeURIComponent(
+                        JSON.stringify(item)
+                      )}`}
+                      onClick={() => {
+                        handleLinkClick(
+                          `/item-details/${encodeURIComponent(
+                            JSON.stringify(item)
+                          )}`
+                        );
+                      }}
+                      state={{ stateParam: item }}
+                    >
                       <img
                         className="card-img-top"
                         src={item.metadata.media}
@@ -52,10 +67,17 @@ const Collections = () => {
                     {/* Card Body */}
                     <div className="card-body mt-4">
                       <Link
-                        to={{
-                          pathname: "/item-details",
-                          state: { itemData: item }, // Pass the item data as the state
+                        to={`/item-details/${encodeURIComponent(
+                          JSON.stringify(item)
+                        )}`}
+                        onClick={() => {
+                          handleLinkClick(
+                            `/item-details/${encodeURIComponent(
+                              JSON.stringify(item)
+                            )}`
+                          );
                         }}
+                        state={{ stateParam: item }} // Pass the item data as the state
                       >
                         <h5 className="mb-2">{item.metadata.title}</h5>
                       </Link>
@@ -63,8 +85,17 @@ const Collections = () => {
                     </div>
 
                     <Link
-                      to="/item-details"
-                      state={{ itemData: item }}
+                      to={`/item-details/${encodeURIComponent(
+                        JSON.stringify(item)
+                      )}`}
+                      onClick={() => {
+                        handleLinkClick(
+                          `/item-details/${encodeURIComponent(
+                            JSON.stringify(item)
+                          )}`
+                        );
+                      }}
+                      state={{ stateParam: item }}
                       className="btn btn-bordered-white btn-smaller mt-3"
                     >
                       <i className="icon-handbag mr-2" />

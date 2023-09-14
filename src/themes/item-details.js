@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 
 import Header from "../components/Header/Header";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
@@ -8,69 +8,69 @@ import Footer from "../components/Footer/Footer";
 import ModalSearch from "../components/Modal/ModalSearch";
 import ModalMenu from "../components/Modal/ModalMenu";
 import Scrollup from "../components/Scrollup/Scrollup";
-import { accountId } from "../utils";
+import { accountId, transferNft } from "../utils";
+import { useParams, useLocation } from "react-router-dom";
+import { useFormik } from "formik";
 
-class ItemDetails extends Component {
-  state = {
-    initData: {},
-    tabData_1: [],
-    tabData_2: [],
-    sellerData: [],
-    itemData: {},
-  };
+const ItemDetails = () => {
+  const { type } = useParams();
+  const stateParamVal = useLocation();
+  const itemData = JSON.parse(decodeURIComponent(type));
+  useEffect(() => {
+    console.log(JSON.parse(decodeURIComponent(type)));
+    console.log(stateParamVal);
+  }, []);
 
-  render() {
-    const { itemData } = this.props.location.state.itemData;
+  const formikTransfer = useFormik({
+    initialValues: {
+      address: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      transferNft(values.address, itemData.metadata.title);
+    },
+  });
 
-    return (
-      <div className="main">
-        <Header />
-        <Breadcrumb
-          title="Item Details"
-          subpage="Explore"
-          page="Item Details"
-        />
-        <section className="item-details-area">
-          <div className="container">
-            <div className="row justify-content-between">
-              <div className="col-12 col-lg-5">
-                <div className="item-info">
-                  <div className="item-thumb text-center">
-                    <img src={itemData.metadata.media} alt="" />
-                  </div>
-                  <div className="card no-hover countdown-times my-4">
-                    {/* <div
+  return (
+    <div className="main">
+      <Header />
+      <Breadcrumb title="Item Details" subpage="Explore" page="Item Details" />
+      <section className="item-details-area">
+        <div className="container">
+          <div className="row justify-content-between">
+            <div className="col-12 col-lg-5">
+              <div className="item-info">
+                <div className="item-thumb text-center">
+                  <img src={itemData.metadata.media} alt="" />
+                </div>
+                <div className="card no-hover countdown-times my-4">
+                  {/* <div
                       className="countdown d-flex justify-content-center"
                       data-date={thisinitData.date}
                     /> */}
-                  </div>
-                  {/* Netstorm Tab */}
-
-                  {/* Tab Content */}
                 </div>
+                {/* Netstorm Tab */}
+
+                {/* Tab Content */}
               </div>
-              <div className="col-12 col-lg-6">
-                {/* Content */}
-                <div className="content mt-5 mt-lg-0">
-                  <h3 className="m-0">{itemData.metadata.title}</h3>
-                  <p>{itemData.metadata.description}</p>
-                  {/* Owner */}
-                  <div className="owner d-flex align-items-center">
-                    <span>Owned By</span>
-                    <a
-                      className="owner-meta d-flex align-items-center ml-3"
-                      href="/author"
-                    >
-                      <img
-                        className="avatar-sm rounded-circle"
-                        src={itemData.owner_id}
-                        alt=""
-                      />
-                      <h6 className="ml-2">{itemData.owner_id}</h6>
-                    </a>
-                  </div>
-                  {/* Item Info List */}
-                  {/* <div className="item-info-list mt-4">
+            </div>
+            <div className="col-12 col-lg-6">
+              {/* Content */}
+              <div className="content mt-5 mt-lg-0">
+                <h3 className="m-0">{itemData.metadata.title}</h3>
+                <p>{itemData.metadata.description}</p>
+                {/* Owner */}
+                <div className="owner d-flex align-items-center">
+                  <span>Owned By</span>
+                  <a
+                    className="owner-meta d-flex align-items-center ml-3"
+                    href="/author"
+                  >
+                    <h6 className="ml-2">{itemData.owner_id}</h6>
+                  </a>
+                </div>
+                {/* Item Info List */}
+                {/* <div className="item-info-list mt-4">
                     <ul className="list-unstyled">
                       <li className="price d-flex justify-content-between">
                         <span>Current Price {this.state.initData.price_1}</span>
@@ -87,26 +87,41 @@ class ItemDetails extends Component {
                       </li>
                     </ul>
                   </div> */}
+                <form
+                  onSubmit={formikTransfer.handleSubmit}
+                  className="item-form card no-hover"
+                >
+                  <div className="form-group mt-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="address"
+                      id="address"
+                      placeholder="receiver id"
+                      onChange={formikTransfer.handleChange}
+                      onBlur={formikTransfer.handleBlur}
+                      value={formikTransfer.values.title}
+                      required="required"
+                    />
+                  </div>
 
-                  <a
-                    className="d-block btn btn-bordered-white mt-4"
-                    href="/wallet-connect"
-                  >
+                  <button className="btn w-100 mt-3 mt-sm-4" type="submit">
                     Transfer
-                  </a>
-                </div>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-        </section>
-        {/* <LiveAuctions /> */}
-        <Footer />
-        <ModalSearch />
-        <ModalMenu />
-        <Scrollup />
-      </div>
-    );
-  }
-}
+        </div>
+      </section>
+      <div>Hello</div>
+      {/* <LiveAuctions /> */}
+      <Footer />
+      <ModalSearch />
+      <ModalMenu />
+      <Scrollup />
+    </div>
+  );
+};
 
 export default ItemDetails;

@@ -33,41 +33,9 @@ const Header = () => {
               </a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link" href="#">
-                Explore <i className="fas fa-angle-down ml-1" />
+              <a className="nav-link" href="/explore-3">
+                Explore
               </a>
-              <ul className="dropdown-menu">
-                <li className="nav-item">
-                  <a href="/explore-1" className="nav-link">
-                    Explore Style 1
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/explore-2" className="nav-link">
-                    Explore Style 2
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/explore-3" className="nav-link">
-                    Explore Style 3
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/explore-4" className="nav-link">
-                    Explore Style 4
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/auctions" className="nav-link">
-                    Live Auctions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/item-details" className="nav-link">
-                    Item Details
-                  </a>
-                </li>
-              </ul>
             </li>
             {/* <li className="nav-item">
                             <a href="/activity" className="nav-link">Activity</a>

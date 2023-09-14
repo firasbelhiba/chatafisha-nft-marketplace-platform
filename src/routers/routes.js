@@ -21,6 +21,8 @@ import Login from "../themes/login";
 import Signup from "../themes/signup";
 import Contact from "../themes/contact";
 import MyCollection from "../themes/myCollection";
+import CreateMsg from "../themes/create-msg";
+import TransferMsg from "../themes/transfer-msg";
 
 class MyRouts extends React.Component {
   render() {
@@ -35,7 +37,7 @@ class MyRouts extends React.Component {
             <Route exact path="/explore-3" component={ExploreThree} />
             <Route exact path="/explore-4" component={ExploreFour} />
             <Route exact path="/auctions" component={Auctions} />
-            <Route exact path="/item-details" component={ItemDetails} />
+            <Route path="/item-details/:type" component={ItemDetails} />
             {/* <Route exact path="/activity" component={Activity} /> */}
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog-single" component={BlogSingle} />
@@ -47,6 +49,8 @@ class MyRouts extends React.Component {
             {/* <Route exact path="/login" component={Login} /> */}
             {/* <Route exact path="/signup" component={Signup} /> */}
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/create-msg/:type" component={CreateMsg} />
+            <Route exact path="/transfer-msg" component={TransferMsg} />
           </Switch>
         </Router>
       </div>

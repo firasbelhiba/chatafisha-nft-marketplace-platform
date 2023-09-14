@@ -10,9 +10,13 @@ function Create() {
       const colls = await getCollectionsNames();
       setCollections(colls); // Update the state
     };
-
     getColls();
   }, []);
+
+  const handleLinkClick = (url) => {
+    window.location.href = url;
+  };
+
   const formikNft = useFormik({
     initialValues: {
       title: "",
@@ -29,7 +33,14 @@ function Create() {
         values.url,
         values.collectionName,
         values.studentAddress
-      );
+      )
+        .then((res) => {
+          console.log(res);
+          handleLinkClick("/create-msg/succeeded");
+        })
+        .catch((err) => {
+          handleLinkClick("/create-msg/failed");
+        });
     },
   });
 
