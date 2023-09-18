@@ -1,6 +1,11 @@
 import React, { Component, useEffect, useState } from "react";
 import AuthorProfile from "../AuthorProfile/AuthorProfile";
-import { getCollectionsNames, mintNft } from "../../utils";
+import {
+  getCollectionsNames,
+  getData,
+  getNftTokens,
+  mintNft,
+} from "../../utils";
 import { useFormik } from "formik";
 
 function Create() {
@@ -11,6 +16,12 @@ function Create() {
       setCollections(colls); // Update the state
     };
     getColls();
+    getData().then((res) => {
+      console.log(res);
+    });
+    getNftTokens().then((res) => {
+      console.log(res);
+    });
   }, []);
 
   const handleLinkClick = (url) => {

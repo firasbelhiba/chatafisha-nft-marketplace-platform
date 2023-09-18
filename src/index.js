@@ -2,9 +2,8 @@ import React from "react";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import { initContract } from "./utils";
-
 
 const children = (
   <React.StrictMode>
@@ -12,7 +11,7 @@ const children = (
   </React.StrictMode>
 );
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
 
 // If you want to start measuring performance in your app, pass a function
@@ -20,12 +19,9 @@ const root = createRoot(container);
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
 initContract()
-.then(() => {
-  root.render(children);
-})
-.catch(console.error);
+  .then(() => {
+    root.render(children);
+  })
+  .catch(console.error);
 
 reportWebVitals();
-
-
-

@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // importing all the themes
 import ThemeOne from "../themes/theme-one";
 import ExploreOne from "../themes/explore-one";
-import ExploreTwo from "../themes/explore-two";
-import ExploreThree from "../themes/explore-three";
+//import ExploreTwo from "../themes/explore-two";
+import ExploreTwo from "../themes/explore-three";
 import ExploreFour from "../themes/explore-four";
 import Auctions from "../themes/auctions";
 import ItemDetails from "../themes/item-details";
@@ -23,6 +23,7 @@ import Contact from "../themes/contact";
 import MyCollection from "../themes/myCollection";
 import CreateMsg from "../themes/create-msg";
 import TransferMsg from "../themes/transfer-msg";
+import ExploreThreee from "../themes/explore-three";
 
 class MyRouts extends React.Component {
   render() {
@@ -32,10 +33,7 @@ class MyRouts extends React.Component {
           <Switch>
             <Route exact path="/" component={ThemeOne} />
             <Route exact path="/collection" component={MyCollection} />
-            <Route exact path="/explore-1" component={ExploreOne} />
-            <Route exact path="/explore-2" component={ExploreTwo} />
-            <Route exact path="/explore-3" component={ExploreThree} />
-            <Route exact path="/explore-4" component={ExploreFour} />
+            <Route exact path="/explore-3" component={ExploreThreee} />
             <Route exact path="/auctions" component={Auctions} />
             <Route path="/item-details/:type" component={ItemDetails} />
             {/* <Route exact path="/activity" component={Activity} /> */}

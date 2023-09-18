@@ -25,7 +25,7 @@ export async function initContract() {
     "chatafisha_nft_marketplace.testnet",
     {
       viewMethods: ["get_marketplacedata", "get_special_data"],
-      changeMethods: ["mint_nft", "nft_transfer"],
+      changeMethods: ["mint_nft", "transfer_nft"],
     }
   );
 
@@ -34,7 +34,7 @@ export async function initContract() {
     "chatafisha_nft.testnet",
     {
       viewMethods: ["nft_tokens_for_owner"],
-      changeMethods: ["nft_transfer", "nft_mint"],
+      changeMethods: ["nft_transfer", "nft_mint", "nft_tokens", "nft_token"],
     }
   );
 }
@@ -55,7 +55,6 @@ export async function login() {
 }
 
 export function accountId() {
-  console.log(window.accountId);
   return {
     accountId: window.accountId,
   };
@@ -92,8 +91,36 @@ export const getCollectionsNames = async () => {
 };
 
 export const transferNft = async (receiverId, tokenId) => {
-  await window.chatafisha_nft_marketplace.nft_transfer({
-    receiver_id: receiverId,
-    token_id: tokenId,
+  await window.chatafisha_nft.nft_transfer(
+    {
+      receiver_id: receiverId,
+      token_id: tokenId,
+      memo: "",
+    },
+    "300000000000000",
+    "1"
+  );
+};
+
+export const getData = async () => {
+  return window.chatafisha_nft_marketplace.get_marketplacedata();
+};
+
+export const getTokens = async () => {
+  const inputObject =
+    await window.chatafisha_nft_marketplace.get_marketplacedata();
+  const tokenIds = Object.values(inputObject).flat();
+
+  const tokenPromises = tokenIds.map(async (token) => {
+    return await window.chatafisha_nft.nft_token({ token_id: token });
   });
+
+  const result = await Promise.all(tokenPromises);
+  return result;
+};
+
+// export const nfts = getTokens();
+
+export const getNftTokens = async () => {
+  return window.chatafisha_nft.nft_tokens();
 };

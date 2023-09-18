@@ -87,34 +87,35 @@ const ItemDetails = () => {
                       </li>
                     </ul>
                   </div> */}
-                <form
-                  onSubmit={formikTransfer.handleSubmit}
-                  className="item-form card no-hover"
-                >
-                  <div className="form-group mt-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="address"
-                      id="address"
-                      placeholder="receiver id"
-                      onChange={formikTransfer.handleChange}
-                      onBlur={formikTransfer.handleBlur}
-                      value={formikTransfer.values.title}
-                      required="required"
-                    />
-                  </div>
+                {itemData.owner_id == accountId().accountId && (
+                  <form
+                    onSubmit={formikTransfer.handleSubmit}
+                    className="item-form card no-hover"
+                  >
+                    <div className="form-group mt-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="address"
+                        id="address"
+                        placeholder="receiver id"
+                        onChange={formikTransfer.handleChange}
+                        onBlur={formikTransfer.handleBlur}
+                        value={formikTransfer.values.title}
+                        required="required"
+                      />
+                    </div>
 
-                  <button className="btn w-100 mt-3 mt-sm-4" type="submit">
-                    Transfer
-                  </button>
-                </form>
+                    <button className="btn w-100 mt-3 mt-sm-4" type="submit">
+                      Transfer
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
-      <div>Hello</div>
       {/* <LiveAuctions /> */}
       <Footer />
       <ModalSearch />

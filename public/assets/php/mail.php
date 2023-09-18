@@ -19,20 +19,20 @@
 
         // Set the recipient email address.
         // FIXME: Update this to your desired email address.
-        $recipient = "hridoy1272@gmail.com";
+        $recipient = "nadalaabidi51@gmail.com";
 
         // Set the email subject.
         $subject = "New contact from $name";
 
         // Build the email content.
         $email_content = "Name: $name\n";
-        $email_content = "Email: $email\n";
-        $email_content = "Subject: $subject\n";
-        $email_content = "Message: $message\n";
+        $email_content .= "Email: $email\n";
+        $email_content .= "Subject: $subject\n";
+        $email_content .= "Message: $message\n";
 
         // Build the email headers.
-        $email_headers = "From: $name <$email>";
-
+        $email_headers = "From: $name <$email>\r\n";
+        $email_headers .= "Reply-To: $email";
         // Send the email.
         if (mail($recipient, $subject, $email_content, $email_headers)) {
             // Set a 200 (okay) response code.
