@@ -15,7 +15,7 @@ const Header = () => {
           <a className="navbar-brand" href="/">
             <img
               className="navbar-brand-sticky"
-              src="img/logo.png"
+              src="https://chatafisha.com/wp-content/uploads/2023/07/chatafisha-icon.png"
               alt="sticky brand-logo"
             />
           </a>
@@ -33,7 +33,7 @@ const Header = () => {
               </a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link" href="/explore-3">
+              <a className="nav-link" href="/explore">
                 Explore
               </a>
             </li>
@@ -106,7 +106,7 @@ const Header = () => {
             </li>
           </ul>
           {/* Navbar Icons */}
-          <ul className="navbar-nav icons">
+          {/* <ul className="navbar-nav icons">
             <li className="nav-item">
               <a
                 href="#"
@@ -117,7 +117,7 @@ const Header = () => {
                 <i className="fas fa-search" />
               </a>
             </li>
-          </ul>
+          </ul> */}
           {/* Navbar Toggler */}
           <ul className="navbar-nav toggle">
             <li className="nav-item">

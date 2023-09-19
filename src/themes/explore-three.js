@@ -25,7 +25,6 @@ const initData = {
 
 const ExploreThreee = () => {
   const [tokens, setTokens] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [isComponentVisible, setComponentVisibility] = useState(false);
   useEffect(() => {
     getNfts();
@@ -40,12 +39,7 @@ const ExploreThreee = () => {
       .catch((error) => {
         console.error("Error fetching tokens:", error);
       });
-    setLoading(false);
     setComponentVisibility(!isComponentVisible);
-  };
-
-  const handleLinkClick = (url) => {
-    window.location.href = url;
   };
 
   // console.log("Tokens:", tokens);
@@ -54,77 +48,17 @@ const ExploreThreee = () => {
   return (
     <div className="main">
       <Header />
-      <Breadcrumb title="Explore" subpage="Explore" page="Explore Style 3" />
+      <Breadcrumb title="Explore" subpage="Explore" page="Chatafisha NFTs" />
 
-      <div className="row justify-content-center">
+      {/* <div className="row justify-content-center">
         <a className="btn btn-bordered-white flex-center" onClick={getNfts}>
           <i className="icon-loop mr-2" />
           Load Nfts if they're not loaded
         </a>
-      </div>
+      </div> */}
 
       {tokens ? (
-        isComponentVisible && (
-          <section className="explore-area">
-            <div className="container">
-              <div className="row items explore-items">
-                {tokens.map((item, idx) => {
-                  return (
-                    <div
-                      key={`edth_${idx}`}
-                      className="col-12 col-sm-6 col-lg-3 item explore-item"
-                    >
-                      <div className="card">
-                        <div className="image-over">
-                          <a href="/item-details">
-                            <img
-                              className="card-img-top"
-                              src={item.metadata.media}
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        {/* Card Caption */}
-                        <div className="card-caption col-12 p-0">
-                          {/* Card Body */}
-                          <div className="card-body">
-                            <a href="/item-details">
-                              <h5 className="mb-0">{item.metadata.title}</h5>
-                            </a>
-                            <div className="seller d-flex align-items-center my-3">
-                              <span>Owned By</span>
-                              <a href="/author">
-                                <h6 className="ml-2 mb-0">{item.owner_id}</h6>
-                              </a>
-                            </div>
-
-                            <Link
-                              to={`/item-details/${encodeURIComponent(
-                                JSON.stringify(item)
-                              )}`}
-                              onClick={() => {
-                                handleLinkClick(
-                                  `/item-details/${encodeURIComponent(
-                                    JSON.stringify(item)
-                                  )}`
-                                );
-                              }}
-                              state={{ stateParam: item }}
-                              className="btn btn-bordered-white btn-smaller mt-3"
-                            >
-                              <i className="icon-rocket mr-2" />
-                              Details
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )
+        isComponentVisible && <ExploreThree tokens={tokens}></ExploreThree>
       ) : (
         <div> No tokens found</div>
       )}

@@ -18,7 +18,7 @@ const CreateMsg = () => {
     <div className="main">
       <Header />
       <section>
-        <h1>NFT transfer {type}</h1>
+        <h1>NFT Mint {type}</h1>
       </section>
       <Footer />
       <ModalSearch />

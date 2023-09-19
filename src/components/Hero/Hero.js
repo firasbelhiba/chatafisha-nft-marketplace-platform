@@ -3,8 +3,8 @@ import { accountId } from "../../utils";
 
 const initData = {
   pre_heading: "NetStorm",
-  heading: "Discover, collect, and sell extraordinary NFTs",
-  content: "Explore on the world's best & largest NFT marketplace",
+  heading: "Discover, collect and transfer extraordinary NFTs",
+  content: "Explore on Chatafisha's NFT marketplace",
   btn_1: "Explore",
   btn_2: "Create",
 };
@@ -37,7 +37,7 @@ class Hero extends Component {
               <p>{this.state.data.content}</p>
               {/* Buttons */}
               <div className="button-group">
-                <a className="btn btn-bordered-white" href="/explore-1">
+                <a className="btn btn-bordered-white" href="/explore">
                   <i className="icon-rocket mr-2" />
                   {this.state.data.btn_1}
                 </a>

@@ -11,6 +11,12 @@ const Collections = () => {
   const handleLinkClick = (url) => {
     window.location.href = url;
   };
+  const initData = {
+    pre_heading: "My Collection",
+    heading: "Collection",
+    btn_1: "View All",
+    btn_2: "Load More",
+  };
 
   useEffect(() => {
     getMCollection(accountId().accountId).then((res) => {
@@ -25,15 +31,12 @@ const Collections = () => {
         <div className="row">
           <div className="col-12">
             {/* Intro */}
-            {/* <div className="intro d-flex justify-content-between align-items-end m-0">
-                                    <div className="intro-content">
-                                        <span>{this.state.data.preHeading}</span>
-                                        <h3 className="mt-3 mb-0">{this.state.data.heading}</h3>
-                                    </div>
-                                    <div className="intro-btn">
-                                        <a className="btn content-btn text-left" href="/explore-2">{this.state.data.btnText}</a>
-                                    </div>
-                                </div> */}
+            <div className="intro d-flex justify-content-between align-items-end m-0">
+              <div className="intro-content">
+                <span>{initData.pre_heading}</span>
+                <h3 className="mt-3 mb-0">{initData.heading}</h3>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row items">

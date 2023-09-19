@@ -9,17 +9,24 @@ import ModalSearch from "../components/Modal/ModalSearch";
 import ModalMenu from "../components/Modal/ModalMenu";
 import Scrollup from "../components/Scrollup/Scrollup";
 import { accountId, transferNft } from "../utils";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 
 const ItemDetails = () => {
   const { type } = useParams();
+  const history = useHistory();
   const stateParamVal = useLocation();
   const itemData = JSON.parse(decodeURIComponent(type));
   useEffect(() => {
     console.log(JSON.parse(decodeURIComponent(type)));
     console.log(stateParamVal);
+    if (history.location.search.includes("transactionHashes")) {
+      window.location.href = "/transfer-msg/succeeded";
+    }
   }, []);
+  const handleLinkClick = (url) => {
+    window.location.href = url;
+  };
 
   const formikTransfer = useFormik({
     initialValues: {
@@ -27,7 +34,14 @@ const ItemDetails = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-      transferNft(values.address, itemData.metadata.title);
+      transferNft(values.address, itemData.metadata.title)
+        .then((res) => {
+          console.log(res);
+          history.push("/transfer-msg/succeeded");
+        })
+        .catch((err) => {
+          handleLinkClick("/transfer-msg/failed");
+        });
     },
   });
 
@@ -64,7 +78,8 @@ const ItemDetails = () => {
                   <span>Owned By</span>
                   <a
                     className="owner-meta d-flex align-items-center ml-3"
-                    href="/author"
+                    key={itemData.owner_id}
+                    href=""
                   >
                     <h6 className="ml-2">{itemData.owner_id}</h6>
                   </a>

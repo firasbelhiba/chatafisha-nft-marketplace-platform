@@ -33,8 +33,8 @@ export async function initContract() {
     window.walletConnection.account(),
     "chatafisha_nft.testnet",
     {
-      viewMethods: ["nft_tokens_for_owner"],
-      changeMethods: ["nft_transfer", "nft_mint", "nft_tokens", "nft_token"],
+      viewMethods: ["nft_tokens_for_owner", "nft_token"],
+      changeMethods: ["nft_transfer", "nft_mint", "nft_tokens"],
     }
   );
 }

@@ -33,22 +33,22 @@ class MyRouts extends React.Component {
           <Switch>
             <Route exact path="/" component={ThemeOne} />
             <Route exact path="/collection" component={MyCollection} />
-            <Route exact path="/explore-3" component={ExploreThreee} />
-            <Route exact path="/auctions" component={Auctions} />
+            <Route exact path="/explore" component={ExploreThreee} />
+            {/* <Route exact path="/auctions" component={Auctions} /> */}
             <Route path="/item-details/:type" component={ItemDetails} />
             {/* <Route exact path="/activity" component={Activity} /> */}
-            <Route exact path="/blog" component={Blog} />
+            {/* <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog-single" component={BlogSingle} />
-            <Route exact path="/help-center" component={HelpCenter} />
-            <Route exact path="/authors" component={Authors} />
-            <Route exact path="/author" component={Author} />
+            <Route exact path="/help-center" component={HelpCenter} /> */}
+            {/* <Route exact path="/authors" component={Authors} />
+            <Route exact path="/author" component={Author} /> */}
             <Route exact path="/wallet-connect" component={WalletConnect} />
             <Route exact path="/create" component={Create} />
             {/* <Route exact path="/login" component={Login} /> */}
             {/* <Route exact path="/signup" component={Signup} /> */}
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/create-msg/:type" component={CreateMsg} />
-            <Route exact path="/transfer-msg" component={TransferMsg} />
+            <Route exact path="/transfer-msg/:type" component={TransferMsg} />
           </Switch>
         </Router>
       </div>
