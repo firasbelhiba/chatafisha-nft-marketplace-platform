@@ -54,8 +54,8 @@
 :root {
   --primary-font: 'Jost', sans-serif;
   --secondary-font: 'Poppins', sans-serif;
-  --h1-size: 4rem;
-  --h1-weight: 900;
+  --h1-size: 77.81px;
+  --h1-weight: 700;
   --h2-size: 3rem;
   --h2-weight: 700;
   --h3-size: 2rem;
@@ -68,34 +68,38 @@
   --h6-weight: 600;
   --p-size: 1rem;
   --p-weight: 400;
-  --header-bg-color: #121117;
+  --header-bg-color: #f9f9f9;
   --nav-brand-height: 55px;
-  --top-nav-item-color: #f5f5f5;
-  --nav-item-color: #121117;
-  --primary-color: #4528DC;
-  --secondary-color: #57048A;
-  --white-color: #f9f9f9;
-  --black-color: #040402;
-  --grey-color: #f3f5f7;
+  --top-nav-item-color: #121117;
+  --nav-item-color: #f9f9f9;
+  --primary-color: rgba(51, 209, 1, 1);
+  --secondary-color: rgba(86, 146, 63, 1);
+  --white-color: #000000;
+  --black-color: #000000;
+  --grey-color: #000000;
   --dark-grey-color: #191919;
-  --primary-t-color: #f5f5f5;
-  --secondary-t-color: #f5f5f5;
-  --primary-p-color: #8E8E8E;
-  --secondary-p-color: #E1E1E1;
-  --primary-b-color: #f5f5f5;
+  --primary-t-color: #040402;
+  --secondary-t-color: #040402;
+  --primary-p-color: #000000;
+  --secondary-p-color: #000000;
+  --primary-b-color: #040402;
   --primary-l-color: rgba(0, 0, 0, .12);
-  --secondary-l-color: rgba(255, 255, 255, 0.12);
+  --secondary-l-color: rgba(0, 0, 0, 0.12);
   --valid-color: #007a4d;
   --invalid-color: #e34f4f;
-  --primary-bg-color: #09080D;
+  --primary-bg-color: #f9f9f9;
   --primary-bg-color-2: #eeeeee;
   --primary-bg-color-3: #e5e5e5;
-  --secondary-bg-color: #040402;
-  --secondary-bg-color-2: #111111;
-  --secondary-bg-color-3: #191919;
-  --card-bg-color: #16151A;
-  --footer-bg-color: #121117;
+  --secondary-bg-color: #f5f5f5;
+  --secondary-bg-color-2: #fafafa;
+  --secondary-bg-color-3: #fcfcfc;
+  --card-bg-color: #E0DFDC;
+  --footer-bg-color: #f9f9f9;
+  
+  --text-color: #040402; /* Dark text color for light backgrounds */
 }
+
+
 
 /* #endregion Root */
 /*----------------------------------------------
@@ -847,6 +851,11 @@ aside {
   padding-left: 0;
 }
 
+.nav-item div {
+  background: #B3E9A2;
+  color: rgba(56, 45, 33, 0.7);
+}
+
 .sidebar ul li a:not(.btn) {
   color: inherit;
   overflow-wrap: break-word;
@@ -1228,8 +1237,11 @@ header .navbar-expand .navbar-brand i {
   color: var(--primary-color);
 }
 
-header .navbar-expand .navbar-brand img {
+header .navbar-expand  {
   height: var(--nav-brand-height);
+}
+.navbar-brand img{
+  height: 100px;
 }
 
 header .navbar-expand .navbar-nav {
@@ -1575,7 +1587,6 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
 .clip-text,
 .text-effect,
 .intro span,
-.hero-section span,
 .share-list .nav-link i {
   -webkit-background-clip: text;
   background-clip: text;
@@ -1585,7 +1596,6 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
 .bg-text, .btn, .blog .pagination > li.active > a,
 .text-effect,
 .intro span,
-.hero-section span,
 .share-list .nav-link i,
 .blog-details .pagination > li.active > a {
   background-image: linear-gradient(150deg, var(--secondary-color) 0%, var(--primary-color) 78%);
@@ -1731,22 +1741,10 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
 
 .hero-section span {
   position: relative;
-  display: inline-block;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 700;
+  color : #56923F;
 }
 
-.hero-section span::after {
-  position: absolute;
-  content: '';
-  height: 3px;
-  width: 45px;
-  background-image: linear-gradient(135deg, var(--primary-color) 10%, var(--secondary-color));
-  top: 50%;
-  left: calc(100% + 20px);
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
 
 .hero-section h1 {
   color: var(--white-color);
@@ -2590,7 +2588,7 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
   width: 45px;
   height: 45px;
   font-size: 20px;
-  background: #222;
+  background: #a7a7a7;
   color: var(--white-color) !important;
   border-radius: 3px;
   overflow: hidden;
@@ -2637,6 +2635,7 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
 
 .footer-area .footer-items .navbar-brand img {
   cursor: pointer;
+  height: 200px;
 }
 
 .footer-area .footer-items .social-icons > a {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { accountId } from "../../utils";
 
 const initData = {
-  pre_heading: "NetStorm",
+  pre_heading: "",
   heading: "Discover, collect and transfer extraordinary NFTs",
   content: "Explore on Chatafisha's NFT marketplace",
   btn_1: "Explore",
@@ -31,10 +31,14 @@ class Hero extends Component {
       <section className="hero-section">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-md-6 col-lg-7">
+            <div className="col-12 col-md-12 col-lg-12">
               <span>{this.state.data.pre_heading}</span>
-              <h1 className="mt-4">{this.state.data.heading}</h1>
+              <h1 className="mt-4">
+                Unlocking a Sustainable Future One{" "}
+                <span>Carbon-Backed NFT</span> at a Time
+              </h1>
               <p>{this.state.data.content}</p>
+
               {/* Buttons */}
               <div className="button-group">
                 <a className="btn btn-bordered-white" href="/explore">

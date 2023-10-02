@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { accountId, login } from "../../utils";
 
 const Header = () => {
+  const isButtonActive = true;
   return (
     <header id="header">
       {/* Navbar */}
@@ -135,7 +136,12 @@ const Header = () => {
           <ul className="navbar-nav action">
             <li className="nav-item ml-3">
               <div
-                className="btn ml-lg-auto btn-bordered-white"
+                className="btn ml-lg-auto"
+                style={{
+                  backgroundColor: "#B3E9A2",
+                  color: "rgba(56, 45, 33, 0.7)", // Dark text color for light backgrounds
+                  // You can add more styles as needed
+                }}
                 onClick={() => login()}
               >
                 <i className="icon-wallet mr-md-2" />

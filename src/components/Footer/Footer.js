@@ -15,24 +15,15 @@ class Footer extends Component {
     },
     socialData: [
       {
-        id: 1,
-        link: "facebook",
-        icon: "fab fa-facebook-f",
-      },
-      {
         id: 2,
-        link: "twitter",
+        link: "https://x.com/chatafisha?s=11&t=hj2iETJ0AG45JhGdjSLNcg",
         icon: "fab fa-twitter",
       },
-      {
-        id: 3,
-        link: "google-plus",
-        icon: "fab fa-google-plus-g",
-      },
+
       {
         id: 4,
-        link: "vine",
-        icon: "fab fa-vine",
+        link: "https://discord.gg/qF3uVxtb3d",
+        icon: "fab fa-discord",
       },
     ],
     widgetData_1: [
@@ -51,6 +42,11 @@ class Footer extends Component {
         id: 3,
         text: "Explore",
         link: "/explore",
+      },
+      {
+        id: 4,
+        text: "www.chatafisha.com",
+        link: "http://www.chatafisha.com",
       },
     ],
     widgetData_2: [
@@ -84,28 +80,7 @@ class Footer extends Component {
         <div className="footer-top">
           <div className="container">
             <div className="row">
-              <div className="col-12 col-sm-6 col-lg-3 res-margin">
-                {/* Footer Items */}
-                <div className="footer-items">
-                  {/* Logo */}
-                  <a className="navbar-brand" href="/">
-                    <img src={this.state.data.img} alt="" />
-                  </a>
-                  <p>{this.state.data.content}</p>
-                  {/* Social Icons */}
-                  {/* <div className="social-icons d-flex">
-                    {this.state.socialData.map((item, idx) => {
-                      return (
-                        <a key={`sd_${idx}`} className={item.link} href="#">
-                          <i className={item.icon} />
-                          <i className={item.icon} />
-                        </a>
-                      );
-                    })}
-                  </div> */}
-                </div>
-              </div>
-              <div className="col-12 col-sm-6 col-lg-3 res-margin">
+              <div className="col-12 col-sm-6 col-lg-6 res-margin">
                 {/* Footer Items */}
                 <div className="footer-items">
                   {/* Footer Title */}
@@ -121,6 +96,30 @@ class Footer extends Component {
                   </ul>
                 </div>
               </div>
+              <div className="col-12 col-sm-6 col-lg-6">
+                {/* Footer Items */}
+                <div className="footer-items">
+                  {/* Logo */}
+                  <a className="navbar-brand" href="/">
+                    <img src={this.state.data.img} alt="" />
+                  </a>
+                  {/* Social Icons */}
+                  <div className="social-icons d-flex">
+                    {this.state.socialData.map((item, idx) => {
+                      return (
+                        <a
+                          key={`sd_${idx}`}
+                          className={item.link}
+                          href={item.link}
+                        >
+                          <i className={item.icon} />
+                          <i className={item.icon} />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -132,9 +131,12 @@ class Footer extends Component {
                 {/* Copyright Area */}
                 <div className="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
                   {/* Copyright Left */}
-                  <div className="copyright-left">
-                    ©2023 Chatafisha, All Rights Reserved.
-                  </div>
+                  <a
+                    className="copyright-left"
+                    href="https://www.chatafisha.com"
+                  >
+                    www.chatafisha.com
+                  </a>
                   {/* Copyright Right */}
                   {/* <div className="copyright-right">
                     Made with <i className="fas fa-heart" /> By{" "}
