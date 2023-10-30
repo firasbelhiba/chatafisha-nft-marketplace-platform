@@ -35,8 +35,8 @@ class Footer extends Component {
 
       {
         id: 2,
-        text: "Contact",
-        link: "/contact",
+        text: "Get Started",
+        link: "/claim-nft",
       },
       {
         id: 3,

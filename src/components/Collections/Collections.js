@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 const BASE_URL =
   "https://my-json-server.typicode.com/themeland/netstorm-json/collections";
 
-const Collections = () => {
+const Collections = ({ collection }) => {
   const [collectionData, setCollectionData] = useState([]);
+  useEffect(() => {
+    getMCollection(accountId().accountId).then((res) => {
+      console.log(res);
+      setCollectionData(res);
+    });
+  }, []);
   const handleLinkClick = (url) => {
     window.location.href = url;
   };
@@ -17,13 +23,6 @@ const Collections = () => {
     btn_1: "View All",
     btn_2: "Load More",
   };
-
-  useEffect(() => {
-    getMCollection(accountId().accountId).then((res) => {
-      console.log(res);
-      setCollectionData(res);
-    });
-  }, []);
 
   return (
     <section className="popular-collections-area">

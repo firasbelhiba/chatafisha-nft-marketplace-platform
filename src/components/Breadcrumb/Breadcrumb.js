@@ -7,7 +7,6 @@ class Breadcrumb extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-6 col-lg-7">
-              <span>{this.props.title}</span>
               <div className=" text-center">
                 <h2 className="m-0">{this.props.title}</h2>
                 <ol className="breadcrumb d-flex justify-content-center">

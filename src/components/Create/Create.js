@@ -7,6 +7,7 @@ import {
   mintNft,
 } from "../../utils";
 import { useFormik } from "formik";
+import axios from "axios";
 
 function Create() {
   const [collections, setCollections] = useState([]);
@@ -30,6 +31,7 @@ function Create() {
 
   const formikNft = useFormik({
     initialValues: {
+      code: "",
       title: "",
       url: "",
       description: "",
@@ -39,14 +41,31 @@ function Create() {
     onSubmit: (values) => {
       console.log(values);
       mintNft(
+        values.code,
         values.title,
         values.description,
         values.url,
         values.collectionName,
         values.studentAddress
       )
-        .then((res) => {
+        .then(async (res) => {
           console.log(res);
+          // await axios
+          //   .delete(`http://localhost:5000/nfts/delete/${values.code}`)
+          //   .then((res) => {
+          //     console.log(res.data);
+          //   })
+          //   .catch((err) => {
+          //     console.log(err);
+          //   });
+          await axios
+            .put(`http://localhost:5000/nfts/update-status/${values.code}`)
+            .then((res) => {
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           handleLinkClick("/create-msg/succeeded");
         })
         .catch((err) => {
@@ -82,6 +101,21 @@ function Create() {
                                             </div>
                                         </div>
                                     </div> */}
+                <div className="col-12">
+                  <div className="form-group mt-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="code"
+                      id="code"
+                      placeholder="Code of the NFT"
+                      onChange={formikNft.handleChange}
+                      onBlur={formikNft.handleBlur}
+                      value={formikNft.values.code}
+                      required="required"
+                    />
+                  </div>
+                </div>
                 <div className="col-12">
                   <div className="form-group mt-3">
                     <input
@@ -137,7 +171,7 @@ function Create() {
                       onChange={formikNft.handleChange}
                       onBlur={formikNft.handleBlur}
                       value={formikNft.values.studentAddress}
-                      placeholder="Student Address"
+                      placeholder="Wallet Address"
                       required="required"
                     />
                   </div>

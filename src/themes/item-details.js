@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 import Header from "../components/Header/Header";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
@@ -11,8 +11,10 @@ import Scrollup from "../components/Scrollup/Scrollup";
 import { accountId, transferNft } from "../utils";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import axios from "axios";
 
 const ItemDetails = () => {
+  const [nft, setNft] = useState(null);
   const { type } = useParams();
   const history = useHistory();
   const stateParamVal = useLocation();
@@ -23,6 +25,15 @@ const ItemDetails = () => {
     if (history.location.search.includes("transactionHashes")) {
       window.location.href = "/transfer-msg/succeeded";
     }
+    axios
+      .get(`http://localhost:5000/nfts/find/${itemData.token_id}`)
+      .then((res) => {
+        setNft(res.data);
+        // console.log(nft);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   const handleLinkClick = (url) => {
     window.location.href = url;
@@ -58,6 +69,12 @@ const ItemDetails = () => {
                   <img src={itemData.metadata.media} alt="" />
                 </div>
                 <div className="card no-hover countdown-times my-4">
+                  {nft && (
+                    <div
+                      className="countdown d-flex justify-content-center"
+                      data-date={nft.date}
+                    />
+                  )}
                   {/* <div
                       className="countdown d-flex justify-content-center"
                       data-date={thisinitData.date}
@@ -85,7 +102,32 @@ const ItemDetails = () => {
                   </a>
                 </div>
                 {/* Item Info List */}
-                {/* <div className="item-info-list mt-4">
+                {nft && (
+                  <div className="item-info-list mt-4">
+                    <ul className="list-unstyled">
+                      <li className="price d-flex justify-content-between">
+                        <strong>Type Of Waste : {nft.typeofwaste}</strong>
+                        {/* <span>{this.state.initData.price_2}</span>
+                        <span>{this.state.initData.count}</span> */}
+                      </li>
+                      <li>
+                        <strong>kilograms : </strong>
+                        <span>{nft.kgs} kg</span>
+                      </li>
+                      <li>
+                        <strong>Image Proof : </strong>
+                        <div className="item-thumb text-center">
+                          <img
+                            src={require(`../images/${nft.image}`).default}
+                            alt=""
+                          />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+                {/*
+                 <div className="item-info-list mt-4">
                     <ul className="list-unstyled">
                       <li className="price d-flex justify-content-between">
                         <span>Current Price {this.state.initData.price_1}</span>

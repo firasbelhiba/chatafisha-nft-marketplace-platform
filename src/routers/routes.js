@@ -24,6 +24,9 @@ import MyCollection from "../themes/myCollection";
 import CreateMsg from "../themes/create-msg";
 import TransferMsg from "../themes/transfer-msg";
 import ExploreThreee from "../themes/explore-three";
+import NFTclaims from "../themes/NFTclaims";
+import PrivateRoute from "./PrivateRoute";
+import { accountId } from "../utils";
 
 class MyRouts extends React.Component {
   render() {
@@ -34,21 +37,27 @@ class MyRouts extends React.Component {
             <Route exact path="/" component={ThemeOne} />
             <Route exact path="/collection" component={MyCollection} />
             <Route exact path="/explore" component={ExploreThreee} />
-            {/* <Route exact path="/auctions" component={Auctions} /> */}
             <Route path="/item-details/:type" component={ItemDetails} />
-            {/* <Route exact path="/activity" component={Activity} /> */}
-            {/* <Route exact path="/blog" component={Blog} />
-            <Route exact path="/blog-single" component={BlogSingle} />
-            <Route exact path="/help-center" component={HelpCenter} /> */}
-            {/* <Route exact path="/authors" component={Authors} />
-            <Route exact path="/author" component={Author} /> */}
-            <Route exact path="/wallet-connect" component={WalletConnect} />
-            <Route exact path="/create" component={Create} />
-            {/* <Route exact path="/login" component={Login} /> */}
-            {/* <Route exact path="/signup" component={Signup} /> */}
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/create-msg/:type" component={CreateMsg} />
             <Route exact path="/transfer-msg/:type" component={TransferMsg} />
+            <Route exact path="/claim-nft" component={Contact} />
+            <PrivateRoute
+              exact
+              path="/create"
+              component={Create}
+              accountId={accountId().accountId}
+            />
+            <PrivateRoute
+              exact
+              path="/create-msg/:type"
+              component={CreateMsg}
+              accountId={accountId().accountId}
+            />
+            <PrivateRoute
+              exact
+              path="/nft-claims"
+              component={NFTclaims}
+              accountId={accountId().accountId}
+            />
           </Switch>
         </Router>
       </div>

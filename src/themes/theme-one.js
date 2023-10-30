@@ -14,13 +14,21 @@ import Scrollup from "../components/Scrollup/Scrollup";
 import { ExportAccountSelectorContextProvider } from "../contexts/WalletSelectorExportContext";
 import ExploreThreee from "./explore-three";
 import ExploreThree from "../components/Explore/ExploreThree";
-import { getTokens } from "../utils";
+import { getTokens, getMCollection, accountId } from "../utils";
 
 const ThemeOne = () => {
   const [tokens, setTokens] = useState([]);
   const [isComponentVisible, setComponentVisibility] = useState(false);
+  const [collectionData, setCollectionData] = useState([]);
   useEffect(() => {
     getNfts();
+  }, []);
+
+  useEffect(() => {
+    getMCollection(accountId().accountId).then((res) => {
+      console.log(res);
+      setCollectionData(res);
+    });
   }, []);
 
   const getNfts = async () => {
@@ -42,7 +50,12 @@ const ThemeOne = () => {
       <Hero />
       {/* <Auctions /> */}
       {/* <TopSeller /> */}
-      <Collections />
+      {collectionData.length !== 0 ? (
+        <Collections collection={collectionData} />
+      ) : (
+        <div></div>
+      )}
+
       <ExploreThree tokens={tokens} />
       {/* <Work /> */}
       <Footer />

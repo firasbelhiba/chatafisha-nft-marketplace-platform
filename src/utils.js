@@ -65,6 +65,7 @@ export function getMCollection(accountId) {
 }
 
 export const mintNft = async (
+  assetCode,
   assetTitle,
   assetDescription,
   assetUrl,
@@ -73,7 +74,7 @@ export const mintNft = async (
 ) => {
   return window.chatafisha_nft_marketplace.mint_nft({
     meetup_ref: assetCollection,
-    token_id: assetTitle,
+    token_id: assetCode,
     token_metadata: {
       title: assetTitle,
       description: assetDescription,

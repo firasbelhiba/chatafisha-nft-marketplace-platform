@@ -3,7 +3,7 @@ import { getNftTokens, getTokens } from "../../utils";
 import { Link } from "react-router-dom";
 
 const initData = {
-  pre_heading: "Dar essalema Collection",
+  pre_heading: "Dar es Salaam Collection",
   heading: "Explore",
   btn_1: "View All",
   btn_2: "Load More",

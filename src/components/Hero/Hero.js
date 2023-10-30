@@ -7,6 +7,7 @@ const initData = {
   content: "Explore on Chatafisha's NFT marketplace",
   btn_1: "Explore",
   btn_2: "Create",
+  btn_3: "Get Started",
 };
 
 class Hero extends Component {
@@ -26,7 +27,12 @@ class Hero extends Component {
           <i className="icon-note mr-2" />
           {this.state.data.btn_2}
         </a>
-      ) : null;
+      ) : (
+        <a className="btn btn-bordered-white no-hover" href="/claim-nft">
+          <i className="icon-note mr-2" />
+          {this.state.data.btn_3}
+        </a>
+      );
     return (
       <section className="hero-section">
         <div className="container">

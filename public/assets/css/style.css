@@ -17,7 +17,9 @@
 *
 ----------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+
 /*----------------------------------------------
 
 [ALL CONTENTS]
@@ -52,8 +54,8 @@
 ----------------------------------------------*/
 /* #region Root */
 :root {
-  --primary-font: 'Jost', sans-serif;
-  --secondary-font: 'Poppins', sans-serif;
+  --primary-font: 'DM Sans', sans-serif;
+  --secondary-font: 'Syne', sans-serif;
   --h1-size: 77.81px;
   --h1-weight: 700;
   --h2-size: 3rem;
@@ -384,19 +386,19 @@ img {
 }
 
 ::-webkit-input-placeholder {
-  color: var(--primary-p-color) !important;
+  color: lightgrey;
 }
 
 :-ms-input-placeholder {
-  color: var(--primary-p-color) !important;
+  color: lightgrey;
 }
 
 ::-ms-input-placeholder {
-  color: var(--primary-p-color) !important;
+  color: lightgrey;
 }
 
 ::placeholder {
-  color: var(--primary-p-color) !important;
+  color: lightgrey;
 }
 
 table {
@@ -437,7 +439,7 @@ input, textarea, select {
   padding: 0.7rem 1rem;
   border-color: var(--primary-l-color);
   border-width: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -553,7 +555,7 @@ td {
 /* #region Section */
 section {
   width: 100%;
-  padding: 130px 0;
+  padding: 70px 0;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -1628,6 +1630,10 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
   transition-property: opacity, transform, -webkit-transform;
 }
 
+.card .types {
+  background-color: rgba(241, 241, 241, 0.925)!important;
+}
+
 .card .card-img-top {
   border-radius: 6px;
 }
@@ -2321,7 +2327,7 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
   -webkit-appearance: auto;
      -moz-appearance: auto;
           appearance: auto;
-  border-radius: 0;
+  border-radius: 8px;
   -webkit-box-shadow: 0 5px 10px var(--primary-l-color);
           box-shadow: 0 5px 10px var(--primary-l-color);
   -webkit-transition: 0.5s;
@@ -2357,7 +2363,8 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
 }
 
 .author-area .item-form .form-group .form-check-input:checked[type="radio"] {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+   
 }
 
 .author-area .item-form hr {
@@ -2852,6 +2859,7 @@ header .navbar-expand .dropdown:hover > .dropdown-menu {
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
 
 /* #endregion Miscellaneous */
 /*----------------------------------------------

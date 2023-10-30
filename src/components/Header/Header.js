@@ -3,6 +3,10 @@ import { accountId, login } from "../../utils";
 
 const Header = () => {
   const isButtonActive = true;
+  const adminAccounts = [
+    "chatafisha_marketplace.near",
+    "chatafisha_nft_marketplace.testnet",
+  ];
   return (
     <header id="header">
       {/* Navbar */}
@@ -100,12 +104,21 @@ const Header = () => {
                 </li>
               </ul>
             </li> */}
-            <li className="nav-item">
-              <a href="/contact" className="nav-link">
-                Contact
-              </a>
-            </li>
+            {adminAccounts.includes(accountId().accountId) ? (
+              <li className="nav-item">
+                <a href="/nft-claims" className="nav-link">
+                  NFT claims
+                </a>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <a href="/claim-nft" className="nav-link">
+                  Claim NFT
+                </a>
+              </li>
+            )}
           </ul>
+
           {/* Navbar Icons */}
           {/* <ul className="navbar-nav icons">
             <li className="nav-item">
